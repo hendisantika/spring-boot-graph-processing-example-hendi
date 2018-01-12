@@ -19,7 +19,7 @@
         <module>twitter-rank-crawler</module>
         <module>twitter-rank-web</module>
         <module>discovery</module>
-        <module>configuration</module>
+        <module>config</module>
     </modules>
 
     <dependencyManagement>
