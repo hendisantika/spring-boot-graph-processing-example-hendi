@@ -1,0 +1,41 @@
+spring.profiles.active: 'prod'
+---
+server:
+  port: 8081
+  servletPath: /
+spring:
+  profiles: 'prod'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    hostname: ${spring.cloud.client.ipAddress:HOSTNAME}
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+---
+server:
+  port: 8081
+  servletPath: /
+spring:
+  profiles: 'dev'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    hostname: ${spring.cloud.client.ipAddress:HOSTNAME}
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+ReadTimeout: 60000
