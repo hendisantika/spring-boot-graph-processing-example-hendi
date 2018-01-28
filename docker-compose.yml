@@ -1,13 +1,13 @@
 discovery:
   container_name: discovery
-  image: kbastani/twitter-discovery:latest
+  image: hendisantika/twitter-discovery:latest
   ports:
    - "8761:8761"
   links:
    - config
 config:
   container_name: config
-  image: kbastani/twitter-configuration:latest
+  image: hendisantika/twitter-configuration:latest
   ports:
    - "8888:8888"
 hdfs:
@@ -16,12 +16,12 @@ hdfs:
   command: /etc/bootstrap.sh -d -bash
 mazerunner:
   container_name: mazerunner
-  image: kbastani/neo4j-graph-analytics:latest
+  image: hendisantika/neo4j-graph-analytics:latest
   links:
    - hdfs
 graphdb:
   container_name: graphdb
-  image: kbastani/docker-neo4j:latest
+  image: hendisantika/docker-neo4j:latest
   ports:
    - "7474:7474"
    - "1337:1337"
@@ -35,7 +35,7 @@ rabbit:
   image: rabbitmq:3
 twitter-rank-web:
   container_name: dashboard
-  image: kbastani/twitter-rank-web:latest
+  image: hendisantika/twitter-rank-web:latest
   ports:
    - "8081:8081"
   links:
@@ -45,7 +45,7 @@ twitter-rank-web:
     SPRING_PROFILES_ACTIVE: "prod"
 twitter-rank-crawler:
   container_name: crawler
-  image: kbastani/twitter-rank-crawler:latest
+  image: hendisantika/twitter-rank-crawler:latest
   ports:
    - "8080:8080"
   links:
